@@ -50,6 +50,8 @@ def set_bmi_data_and_overweight(person,count):
     
 with open('./input.json') as f:
     input_data = json.load(f)
+    print("Given Input Data")
+    print(input_data)
     total_over_weight = 0
     for person in input_data:
         height_in_meters = person['HeightCm']/100
@@ -57,4 +59,5 @@ with open('./input.json') as f:
         total_over_weight=set_bmi_data_and_overweight(person,count = total_over_weight)
     print("Total_no_of_OverWeight :",total_over_weight)
     output_data = json.dumps(input_data, indent=2)
+    print("Resultant Data")
     print(output_data)
