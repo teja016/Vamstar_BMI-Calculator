@@ -1,15 +1,10 @@
 import json
 
-
-
-
-
 bmi_data = [
     {
         "value":[0,18.4],
         "bmi_category":"under weight",
         "health_risk":"malnutrition risk",
-
     },
     {
         "value":[18.5,24.9],
@@ -48,13 +43,11 @@ def set_bmi_data_and_overweight(person,count):
             person['bmi_category'] = bmi_category['bmi_category']
             person['health_risk'] = bmi_category['health_risk']
             if bmi_category['bmi_category'] =="over weight":
-                count+=1
+                count=count+1
     return count
 
 
     
-
-
 with open('./input.json') as f:
     input_data = json.load(f)
     total_over_weight = 0
@@ -62,5 +55,6 @@ with open('./input.json') as f:
         height_in_meters = person['HeightCm']/100
         person['bmi_value'] = person['WeightKg']/(height_in_meters*height_in_meters)
         total_over_weight=set_bmi_data_and_overweight(person,count = total_over_weight)
-    print(input_data,total_over_weight)
-
+    print("Total_no_of_OverWeight :",total_over_weight)
+    output_data = json.dumps(input_data, indent=2)
+    print(output_data)
